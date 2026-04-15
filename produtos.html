@@ -3,198 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout Seguro - MentoriaLopes</title>
+    <title>Checkout Premium - MentoriaLopes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #d4af37;
-            --gold-light: #f1d592;
-            --dark-bg: #0a0a0a;
-            --card-bg: rgba(255, 255, 255, 0.03);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: radial-gradient(circle at top right, #1a1a1a, #0a0a0a);
-        }
-
-        .checkout-container {
-            width: 90%;
-            max-width: 500px;
-            padding: 40px 20px;
-        }
-
-        /* Cabeçalho Profissional */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 1.8rem;
-            letter-spacing: -1px;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, var(--gold), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header p {
-            font-size: 0.85rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Tabela de Produtos Estilo Listagem VIP */
-        .product-list {
-            background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 24px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-        }
-
-        .product-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .product-item:last-child { border-bottom: none; }
-
-        .info-main { display: flex; flex-direction: column; }
-        .label-saldo { font-weight: 600; font-size: 1rem; color: #fff; }
-        .label-sub { font-size: 0.75rem; color: #666; }
-
-        .price-tag {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        /* Seção de Pagamento PIX */
-        .payment-box {
-            text-align: center;
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 30px;
-            color: #000;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .payment-box h2 { font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
-
-        .qr-placeholder {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 20px;
-            border: 1px solid #eee;
-            padding: 10px;
-            border-radius: 12px;
-        }
-
-        .qr-placeholder img { width: 100%; height: 100%; border-radius: 8px; }
-
-        .pix-instructions { font-size: 0.8rem; color: #555; line-height: 1.5; }
+        :root { --gold: #d4af37; --gold-light: #f1d592; --dark-bg: #0a0a0a; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: #fff; display: flex; justify-content: center; min-height: 100vh; background-image: radial-gradient(circle at top right, #1a1a1a, #0a0a0a); }
+        .container { width: 95%; max-width: 500px; padding: 40px 0; }
         
-        .security-footer {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            opacity: 0.5;
-            font-size: 0.7rem;
-        }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 1.8rem; background: linear-gradient(to right, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; font-weight: 800; }
+        .header p { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
 
-        .btn-back {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
+        .warning-box { background: rgba(212, 175, 55, 0.1); border: 1px dashed var(--gold); border-radius: 15px; padding: 15px; margin-bottom: 25px; text-align: center; font-size: 0.8rem; color: var(--gold-light); }
+
+        /* Tabela VIP */
+        .product-list { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; padding: 10px; backdrop-filter: blur(10px); margin-bottom: 30px; }
+        .product-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; cursor: pointer; }
+        .product-item:hover { background: rgba(212, 175, 55, 0.05); }
+        .product-item:last-child { border-bottom: none; }
+        
+        .info-main { display: flex; flex-direction: column; }
+        .label-saldo { font-weight: 600; font-size: 0.95rem; color: #fff; }
+        .label-sub { font-size: 0.7rem; color: #666; }
+        
+        .btn-pay { background: var(--gold); color: #000; padding: 8px 15px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); }
+
+        /* Toast de Sucesso */
+        #toast { visibility: hidden; min-width: 250px; background-color: #d4af37; color: #000; text-align: center; border-radius: 50px; padding: 16px; position: fixed; z-index: 1; bottom: 30px; font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        .footer-info { text-align: center; font-size: 0.7rem; color: #555; margin-top: 20px; line-height: 1.6; }
     </style>
 </head>
 <body>
 
-    <div class="checkout-container">
-        <div class="header">
-            <p>Área de Pagamento</p>
-            <h1>MentoriaLopes<span>.</span></h1>
-        </div>
+<div id="toast">Código PIX Copiado!</div>
 
-        <div class="product-list">
-            <div class="product-item">
-                <div class="info-main">
-                    <span class="label-saldo">Conta R$ 400</span>
-                    <span class="label-sub">Liberação Imediata</span>
-                </div>
-                <div class="price-tag">R$ 60</div>
-            </div>
-
-            <div class="product-item">
-                <div class="info-main">
-                    <span class="label-saldo">Conta R$ 1.550</span>
-                    <span class="label-sub">Saldo Transferível</span>
-                </div>
-                <div class="price-tag">R$ 150</div>
-            </div>
-
-            <div class="product-item">
-                <div class="info-main">
-                    <span class="label-saldo">Conta R$ 5.100</span>
-                    <span class="label-sub">Premium Pack</span>
-                </div>
-                <div class="price-tag">R$ 500</div>
-            </div>
-
-            <div class="product-item" style="border:none;">
-                <div class="info-main">
-                    <span class="label-saldo">Conta R$ 10.200</span>
-                    <span class="label-sub">VIP Business</span>
-                </div>
-                <div class="price-tag">R$ 1.000</div>
-            </div>
-        </div>
-
-        <div class="payment-box">
-            <h2>Finalizar via PIX</h2>
-            <div class="qr-placeholder">
-                <img src="qrcode.jpg" alt="QR Code de Pagamento">
-            </div>
-            <p class="pix-instructions">
-                Aponte a câmera do seu celular para o QR Code.<br>
-                Após o pagamento, envie o comprovante no WhatsApp.
-            </p>
-        </div>
-
-        <div class="security-footer">
-            <span><i class="fas fa-lock"></i> Pagamento Criptografado</span>
-            <span><i class="fas fa-shield-alt"></i> Compra 100% Segura</span>
-        </div>
-
-        <a href="index.html" class="btn-back">
-            <i class="fas fa-chevron-left"></i> Voltar para a Galeria
-        </a>
+<div class="container">
+    <div class="header">
+        <p>MentoriaLopes CyberDivision</p>
+        <h1>ÁREA DE PAGAMENTO</h1>
     </div>
+
+    <div class="warning-box">
+        <i class="fas fa-exclamation-triangle"></i> ⚠️ ASSISTA O VÍDEO EXPLICATIVO ANTES DE COMPRAR!
+    </div>
+
+    <div class="product-list">
+        <script>
+            const produtos = [
+                {s: "400", v: "60"}, {s: "610", v: "85"}, {s: "720", v: "95"}, 
+                {s: "800", v: "110"}, {s: "900", v: "120"}, {s: "1.050", v: "135"},
+                {s: "1.550", v: "150"}, {s: "2.120", v: "170"}, {s: "2.550", v: "280"},
+                {s: "3.500", v: "350"}, {s: "4.100", v: "400"}, {s: "5.100", v: "500"},
+                {s: "6.200", v: "600"}, {s: "7.400", v: "700"}, {s: "10.200", v: "1.000"}
+            ];
+
+            produtos.forEach(p => {
+                document.write(`
+                    <div class="product-item" onclick="copyPix('${p.v}')">
+                        <div class="info-main">
+                            <span class="label-saldo">SALDO DE R$ ${p.s}</span>
+                            <span class="label-sub">Recarga Pay • Transferível</span>
+                        </div>
+                        <button class="btn-pay">R$ ${p.v}</button>
+                    </div>
+                `);
+            });
+        </script>
+    </div>
+
+    <div class="footer-info">
+        <p><i class="fas fa-shield-alt"></i> Pagamento processado via PIX Copia e Cola.<br>
+        Após clicar no valor, o código será copiado.<br>
+        <strong>Envie o comprovante no WhatsApp após concluir.</strong></p>
+    </div>
+    
+    <a href="index.html" style="display:block; text-align:center; color: #444; text-decoration:none; font-size:0.8rem; margin-top:20px;">Voltar ao início</a>
+</div>
+
+<script>
+    function copyPix(valor) {
+        // Substitua pelo seu código PIX real gerado no banco
+        const chavePix = "73207087-03ad-4b5c-9608-8e453dbafb18";
+        
+        navigator.clipboard.writeText(chavePix).then(() => {
+            const toast = document.getElementById("toast");
+            toast.innerText = "PIX de R$ " + valor + " Copiado! Cole no seu Banco.";
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        });
+    }
+</script>
 
 </body>
 </html>
