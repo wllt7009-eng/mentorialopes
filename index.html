@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            /* MUDANÇA TOTAL DE CORES: DARK & GOLD VÍVIDO */
+            /* MANTIVE O VISUAL DARK & GOLD VÍVIDO COMO PEDIDO */
             --bg-deep-dark: #0a0a0a;
             --bg-card-dark: rgba(20, 20, 20, 0.6); /* Transparente / Glassmorphism */
             --gold-vivid: #ffd700; /* Dourado Vivo */
@@ -22,7 +22,6 @@
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            /* Fundo Escuro Profundo com um leve reflexo radial */
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
             color: var(--text-light);
             display: flex;
@@ -34,7 +33,6 @@
 
         .header {
             width: 100%;
-            /* Camada de mistura para o gradiente suavizar para o escuro */
             background-image: 
                 linear-gradient(to bottom, rgba(10,10,10,0) 60%, var(--bg-deep-dark) 100%),
                 url('e30ebd2962bc386bf9a98cbe3ff0c217.jpg'); 
@@ -42,11 +40,11 @@
             background-position: center;
             display: flex;
             justify-content: center;
-            padding: 80px 0 50px 0;
+            /* AJUSTE 1: Espaço reduzido para subir o conteúdo */
+            padding: 40px 0 20px 0; 
             position: relative;
         }
 
-        /* Sobreposição escura para destacar a foto de perfil */
         .header::before {
             content: '';
             position: absolute;
@@ -60,7 +58,6 @@
             height: 160px;
             object-fit: cover;
             border-radius: 50%;
-            /* Borda dourada e brilhante */
             border: 3px solid var(--gold-vivid);
             box-shadow: 0 0 20px var(--gold-glow);
             position: relative;
@@ -69,7 +66,8 @@
 
         h1 {
             font-size: 2.2rem;
-            margin: 25px 0;
+            /* AJUSTE 2: Margem vertical reduzida para aproximar nome */
+            margin: 15px 0; 
             font-weight: 800;
             color: var(--text-light);
             text-align: center;
@@ -82,31 +80,31 @@
             background: var(--bg-card-dark);
             width: 90%;
             max-width: 400px;
-            padding: 40px 20px;
+            /* AJUSTE 3: Reduz padding interno e margem externa */
+            padding: 25px 20px; 
+            margin-bottom: 20px; 
             border-radius: 24px;
-            /* Efeito de Vidro (Glassmorphism) */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 215, 0, 0.15); /* Borda dourada sutil */
+            border: 1px solid rgba(255, 215, 0, 0.15); 
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             text-align: center;
-            margin-bottom: 30px;
         }
 
         .btn-link {
             display: block;
             text-decoration: none;
-            padding: 18px;
+            /* AJUSTE 4: Reduz padding interno dos botões */
+            padding: 14px; 
             border-radius: 15px;
             font-size: 1.3rem;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        /* Efeito de brilho neon nos botões */
         .btn-link::after {
             content: '';
             position: absolute;
@@ -118,7 +116,6 @@
             left: 100%;
         }
 
-        /* Botão Laranjas: Laranja Vívido com Brilho */
         .btn-orange {
             background-color: var(--orange-vivid);
             color: #fff;
@@ -126,7 +123,6 @@
         }
         .btn-orange:hover { box-shadow: 0 0 25px var(--orange-glow); }
 
-        /* Botão CC: Preto/Dourado Premium */
         .btn-dark-gold {
             background-color: #111;
             color: var(--gold-vivid);
@@ -135,7 +131,6 @@
         }
         .btn-dark-gold:hover { background-color: #000; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
 
-        /* Botão Contas: Dourado Vívido com Brilho Intenso */
         .btn-gold {
             background-color: var(--gold-vivid);
             color: #000;
@@ -149,7 +144,7 @@
             font-size: 0.8rem;
             color: #999;
             line-height: 1.6;
-            margin: 20px 0 30px 0;
+            margin: 15px 0 20px 0;
             font-weight: 400;
         }
 
@@ -157,7 +152,7 @@
             display: flex;
             justify-content: space-around;
             border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 25px;
+            padding-top: 15px;
         }
 
         .link-item { 
@@ -192,7 +187,7 @@
 
         footer {
             margin-top: auto;
-            padding: 30px;
+            padding: 20px;
             font-size: 0.75rem;
             color: #666;
             text-align: center;
