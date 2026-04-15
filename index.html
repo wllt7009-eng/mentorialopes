@@ -2,25 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MentoriaLopes | Premium Access</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* MANTIVE O VISUAL DARK & GOLD VÍVIDO COMO PEDIDO */
             --bg-deep-dark: #0a0a0a;
-            --bg-card-dark: rgba(20, 20, 20, 0.6); /* Transparente / Glassmorphism */
-            --gold-vivid: #ffd700; /* Dourado Vivo */
-            --gold-glow: rgba(255, 215, 0, 0.4); /* Brilho do Dourado */
-            --orange-vivid: #ff8c00; /* Laranja Vivo */
+            --bg-card-dark: rgba(20, 20, 20, 0.6);
+            --gold-vivid: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.4);
+            --orange-vivid: #ff8c00;
             --orange-glow: rgba(255, 140, 0, 0.3);
             --text-light: #eeeeee;
         }
 
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
             color: var(--text-light);
@@ -28,7 +28,9 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
+            /* TRAVA LATERAL: Impede que a tela balance para os lados */
+            overflow-x: hidden; 
+            width: 100%;
         }
 
         .header {
@@ -40,8 +42,7 @@
             background-position: center;
             display: flex;
             justify-content: center;
-            /* AJUSTE 1: Espaço reduzido para subir o conteúdo */
-            padding: 40px 0 20px 0; 
+            padding: 35px 0 15px 0; /* Espaço seco e direto */
             position: relative;
         }
 
@@ -54,8 +55,8 @@
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 150px; /* Um pouco menor para caber tudo na tela sem rolar */
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid var(--gold-vivid);
@@ -65,87 +66,50 @@
         }
 
         h1 {
-            font-size: 2.2rem;
-            /* AJUSTE 2: Margem vertical reduzida para aproximar nome */
-            margin: 15px 0; 
+            font-size: 2rem;
+            margin: 10px 0; /* Nome colado na foto */
             font-weight: 800;
-            color: var(--text-light);
             text-align: center;
-            letter-spacing: -1px;
         }
 
         h1 span { color: var(--gold-vivid); font-weight: 400; text-shadow: 0 0 10px var(--gold-glow); }
 
         .card {
             background: var(--bg-card-dark);
-            width: 90%;
-            max-width: 400px;
-            /* AJUSTE 3: Reduz padding interno e margem externa */
-            padding: 25px 20px; 
-            margin-bottom: 20px; 
-            border-radius: 24px;
+            width: 92%; /* Ocupa bem a tela do celular */
+            max-width: 380px;
+            padding: 20px 15px; 
+            margin-bottom: 15px; 
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.15); 
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             text-align: center;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura */
         }
 
         .btn-link {
             display: block;
             text-decoration: none;
-            /* AJUSTE 4: Reduz padding interno dos botões */
             padding: 14px; 
-            border-radius: 15px;
-            font-size: 1.3rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-link::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        .btn-link:hover::after {
-            left: 100%;
-        }
-
-        .btn-orange {
-            background-color: var(--orange-vivid);
-            color: #fff;
-            box-shadow: 0 4px 15px var(--orange-glow);
-        }
-        .btn-orange:hover { box-shadow: 0 0 25px var(--orange-glow); }
-
-        .btn-dark-gold {
-            background-color: #111;
-            color: var(--gold-vivid);
-            border: 1px solid var(--gold-vivid);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .btn-dark-gold:hover { background-color: #000; box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
-
-        .btn-gold {
-            background-color: var(--gold-vivid);
-            color: #000;
-            box-shadow: 0 4px 20px var(--gold-glow);
-        }
-        .btn-gold:hover { box-shadow: 0 0 30px var(--gold-glow); }
-
-        .btn-link:active { transform: scale(0.96); }
+        .btn-orange { background-color: var(--orange-vivid); color: #fff; box-shadow: 0 4px 15px var(--orange-glow); }
+        .btn-dark-gold { background-color: #111; color: var(--gold-vivid); border: 1px solid var(--gold-vivid); }
+        .btn-gold { background-color: var(--gold-vivid); color: #000; box-shadow: 0 4px 20px var(--gold-glow); }
 
         .description {
-            font-size: 0.8rem;
-            color: #999;
-            line-height: 1.6;
-            margin: 15px 0 20px 0;
-            font-weight: 400;
+            font-size: 0.75rem;
+            color: #888;
+            margin: 10px 0 15px 0;
         }
 
         .footer-links {
@@ -155,51 +119,25 @@
             padding-top: 15px;
         }
 
-        .link-item { 
-            color: #bbb; 
-            text-decoration: none; 
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
-        }
+        .link-item { color: #bbb; text-decoration: none; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; }
+        .link-item i { color: var(--gold-vivid); }
 
-        .link-item i { color: var(--gold-vivid); text-shadow: 0 0 5px var(--gold-glow); }
-        .link-item:hover { color: #fff; }
-
-        .social-links {
-            margin-top: 10px;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-        .social-links a {
-            color: #555;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-        .social-links a:hover {
-            color: var(--gold-vivid);
-            text-shadow: 0 0 10px var(--gold-glow);
-            transform: translateY(-3px);
-        }
+        .social-links { margin-bottom: 15px; display: flex; gap: 20px; }
+        .social-links a { color: #444; font-size: 1.1rem; }
 
         footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.75rem;
-            color: #666;
+            padding: 15px;
+            font-size: 0.7rem;
+            color: #555;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
             width: 100%;
         }
     </style>
 </head>
 <body>
     
-    <div id="music-player" style="position: fixed; top: 15px; right: 15px; z-index: 9999;">
-        <button onclick="toggleMusic()" id="music-btn" style="background: rgba(0, 200, 83, 0.1); border: 1px solid #00c853; color: #00c853; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">
+    <div id="music-player" style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+        <button onclick="toggleMusic()" id="music-btn" style="background: rgba(0, 200, 83, 0.1); border: 1px solid #00c853; color: #00c853; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
             <i class="fas fa-music" id="music-icon"></i>
         </button>
         <audio id="bg-audio" loop>
@@ -213,10 +151,10 @@
             const icon = document.getElementById('music-icon');
             const btn = document.getElementById('music-btn');
             if (audio.paused) {
-                audio.play(); icon.classList.remove('fa-music'); icon.classList.add('fa-pause');
+                audio.play(); icon.classList.replace('fa-music', 'fa-pause');
                 btn.style.background = '#00c853'; btn.style.color = '#fff';
             } else {
-                audio.pause(); icon.classList.remove('fa-pause'); icon.classList.add('fa-music');
+                audio.pause(); icon.classList.replace('fa-pause', 'fa-music');
                 btn.style.background = 'rgba(0, 200, 83, 0.1)'; btn.style.color = '#00c853';
             }
         }
@@ -246,7 +184,7 @@
         </p>
 
         <div class="footer-links">
-            <a href="#" class="link-item"><i class="fas fa-user-tie"></i> Minha Biografia</a>
+            <a href="#" class="link-item"><i class="fas fa-user-tie"></i> Biografia</a>
             <a href="#" class="link-item"><i class="fas fa-comments"></i> Depoimentos</a>
         </div>
     </div>
@@ -258,7 +196,7 @@
     </div>
 
     <footer>
-        MentoriaLopes © 2026 | Premium Access Division
+        MentoriaLopes © 2026
     </footer>
 
 </body>
