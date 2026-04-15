@@ -8,148 +8,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Estilo Base Cyberpunk */
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Orbitron', sans-serif; /* Fonte futurista */
-            background-color: #050505; /* Fundo quase preto */
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Orbitron', sans-serif;
+        background-color: #050505;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
 
-        /* Título com Efeito Neon Pulsante */
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            color: #fff;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #fff,
-                0 0 20px #00d2ff,
-                0 0 30px #00d2ff,
-                0 0 40px #00d2ff;
-            animation: pulsante 1.5s infinite alternate;
-            margin-bottom: 40px;
-        }
+    /* Título Neon */
+    h1 {
+        font-size: 2rem;
+        text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff;
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-        @keyframes pulsante {
-            from { text-shadow: 0 0 10px #fff, 0 0 20px #00d2ff; }
-            to { text-shadow: 0 0 5px #fff, 0 0 10px #00d2ff, 0 0 30px #00d2ff, 0 0 50px #00d2ff; }
-        }
+    /* Container com bordas girando */
+    .neon-box {
+        width: 100%;
+        max-width: 480px;
+        background: #050505;
+        border-radius: 20px;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
 
-        /* Container Principal com Borda de Cores Móveis */
-        .neon-box {
-            width: 100%;
-            max-width: 480px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
-            padding: 30px 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
-            margin-bottom: 30px;
-        }
+    .neon-box::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: conic-gradient(#00d2ff, #3a0ca3, #f72585, #4cc9f0, #00d2ff);
+        animation: rodar 4s linear infinite;
+        z-index: -2;
+    }
 
-        /* A Mágica das Cores se Movendo na Borda */
-        .neon-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                #00d2ff, /* Azul Neon */
-                #3a0ca3, /* Roxo Escuro */
-                #f72585, /* Rosa Choque */
-                #4cc9f0, /* Azul Claro */
-                #00d2ff  /* Fecha o ciclo */
-            );
-            animation: rodar-cores 4s linear infinite;
-            z-index: -1;
-        }
+    .neon-box::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        background: #050505;
+        border-radius: 16px;
+        z-index: -1;
+    }
 
-        .neon-box::after {
-            content: '';
-            position: absolute;
-            inset: 4px; /* Espessura da borda */
-            background: #050505; /* Cor do fundo interna */
-            border-radius: 16px;
-            z-index: -1;
-        }
+    @keyframes rodar {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
 
-        @keyframes rodar-cores {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    /* AJUSTE PARA NÃO CORTAR AS FOTOS */
+    .item-prova img, .item-prova video {
+        width: 100%;
+        height: auto; /* A altura se ajusta ao conteúdo */
+        display: block;
+        border-radius: 12px;
+        border: 2px solid #00d2ff;
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        object-fit: contain; /* Mostra a foto inteira sem cortes */
+    }
 
-        /* Estilo dos Itens de Referência (Prints) */
-        .item-prova {
-            margin-bottom: 35px;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
-            padding-bottom: 20px;
-        }
+    .item-prova p {
+        font-size: 0.9rem;
+        color: #00d2ff;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
 
-        .item-prova p { font-size: 1.1rem; color: #4cc9f0; margin-bottom: 15px; }
-
-        /* Moldura Neon para as Fotos */
-        .img-prova {
-            width: 100%;
-            border-radius: 12px;
-            border: 2px solid #00d2ff;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
-            transition: transform 0.3s ease;
-        }
-
-        .img-prova:hover { transform: scale(1.03); }
-
-        /* Moldura Neon para os Vídeos */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 2px solid #f72585; /* Borda rosa para variar */
-            box-shadow: 0 0 15px rgba(247, 37, 133, 0.7);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: none;
-        }
-
-        /* Botão de Voltar com Estilo Cyberpunk */
-        .btn-voltar {
-            display: inline-block;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 15px 30px;
-            background: transparent;
-            border: 2px solid #00d2ff;
-            border-radius: 10px;
-            box-shadow: 
-                0 0 10px rgba(0, 210, 255, 0.5),
-                inset 0 0 10px rgba(0, 210, 255, 0.5);
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .btn-voltar:hover {
-            background: #00d2ff;
-            color: #050505;
-            box-shadow: 0 0 30px #00d2ff;
-        }
-
+    .btn-voltar {
+        margin: 30px 0;
+        text-decoration: none;
+        color: #fff;
+        padding: 15px 30px;
+        border: 2px solid #00d2ff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00d2ff;
+        transition: 0.3s;
+    }
     </style>
+    
 </head>
 <body>
 
