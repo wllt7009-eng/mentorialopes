@@ -2,106 +2,142 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Recarga Oficial - MentoriaLopes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #00c853;
-            --dark-green: #009624;
-            --bg-light: #f4f7f6;
-            --text-dark: #1d1d1d;
+            /* Cores extraídas da primeira página para manter o charme */
+            --gold-vivid: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.4);
+            --bg-deep-dark: #0a0a0a;
+            --text-light: #eeeeee;
+            --card-glass: rgba(0, 0, 0, 0.75);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Lexend', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            color: var(--text-light);
             display: flex;
             justify-content: center;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 500px;
             padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Cabeçalho */
+        /* Cabeçalho Black & Gold */
         .header {
             text-align: center;
-            padding: 30px 0;
+            padding: 20px 0;
         }
 
         .header h1 {
-            font-size: 1.5rem;
-            color: var(--dark-green);
+            font-size: 1.6rem;
+            color: var(--text-light);
             margin: 0;
             font-weight: 800;
             letter-spacing: -1px;
         }
+        .header h1 span { color: var(--gold-vivid); text-shadow: 0 0 10px var(--gold-glow); }
 
         .btn-video {
             display: inline-block;
             margin-top: 15px;
-            background: #fff;
-            color: var(--dark-green);
-            padding: 10px 20px;
+            background: transparent;
+            color: var(--gold-vivid);
+            padding: 8px 18px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            border: 2px solid var(--primary-green);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--gold-vivid);
+            box-shadow: 0 0 10px var(--gold-glow);
+            transition: 0.3s;
         }
 
-        /* Grade de Blocos */
+        /* Grade de Blocos com a imagem do dragão */
         .price-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .price-card {
-            background: #fff;
-            padding: 20px 10px;
+            position: relative;
+            height: 110px;
             border-radius: 16px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
+            overflow: hidden; /* Corta a imagem nas bordas arredondadas */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
             transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .price-card:active { transform: scale(0.95); border-color: var(--primary-green); }
+        /* Imagem de fundo do bloco (Dragão Dourado) */
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('1000804582.jpg'); /* Sua imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
 
-        .saldo-label { font-size: 0.7rem; color: #777; text-transform: uppercase; display: block; }
-        .saldo-valor { font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin: 5px 0; display: block; }
-        .preco-tag { color: var(--primary-green); font-weight: 700; font-size: 0.9rem; }
+        /* Camada de mistura para o texto aparecer (Overlay) */
+        .price-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 2;
+        }
 
-        /* Seção de Ações */
-        .action-box {
-            background: #fff;
-            border-radius: 24px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .price-card:active { transform: scale(0.95); border-color: var(--gold-vivid); }
+
+        .card-content {
+            position: relative;
+            z-index: 3; /* Fica acima da imagem e do fundo preto */
             text-align: center;
         }
 
-        .action-box h2 { font-size: 1.1rem; margin-bottom: 15px; }
+        .saldo-label { font-size: 0.65rem; color: #bbb; text-transform: uppercase; font-weight: 400; }
+        .saldo-valor { font-size: 1.2rem; font-weight: 800; color: #fff; margin: 2px 0; display: block; }
+        .preco-tag { color: var(--gold-vivid); font-weight: 700; font-size: 0.95rem; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+
+        /* Ações */
+        .action-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            text-align: center;
+        }
+
+        .action-box h2 { font-size: 1.1rem; margin-bottom: 15px; color: var(--gold-vivid); }
 
         .btn-main {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             border-radius: 12px;
             border: none;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -109,20 +145,20 @@
             transition: 0.3s;
         }
 
-        .btn-pix { background: var(--primary-green); color: #fff; }
+        .btn-pix { background: #fff; color: #000; }
         .btn-wpp { background: #25d366; color: #fff; text-decoration: none; }
 
         #toast {
             visibility: hidden;
-            background-color: #333;
-            color: #fff;
+            background-color: var(--gold-vivid);
+            color: #000;
             text-align: center;
             border-radius: 8px;
-            padding: 16px;
+            padding: 12px;
             position: fixed;
-            z-index: 1;
+            z-index: 10;
             bottom: 30px;
-            font-size: 0.9rem;
+            font-weight: 700;
         }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
 
@@ -132,8 +168,8 @@
         .btn-voltar {
             display: block;
             text-align: center;
-            margin-top: 30px;
-            color: #888;
+            margin: 20px 0;
+            color: #666;
             text-decoration: none;
             font-size: 0.8rem;
         }
@@ -141,17 +177,17 @@
 </head>
 <body>
 
-<div id="toast">Chave PIX Copiada!</div>
+<div id="toast">CHAVE PIX COPIADA! 💰</div>
 
 <div class="container">
     <div class="header">
-        <h1>RECARGA MENTORIALOPES</h1>
+        <h1>RECARGA MENTORIA<span>LOPES</span></h1>
         <a href="referencias.html" class="btn-video">
             <i class="fas fa-play-circle"></i> ASSISTIR VÍDEO EXPLICATIVO
         </a>
     </div>
 
-    <p style="text-align:center; font-size: 0.85rem; color: #666; margin-bottom: 20px;">Escolha o valor desejado na tabela abaixo:</p>
+    <p style="text-align:center; font-size: 0.8rem; color: #aaa; margin-bottom: 15px;">Escolha o valor desejado na tabela abaixo:</p>
 
     <div class="price-grid">
         <script>
@@ -166,9 +202,11 @@
             produtos.forEach(p => {
                 document.write(`
                     <div class="price-card">
-                        <span class="saldo-label">SALDO</span>
-                        <span class="saldo-valor">R$ ${p.s}</span>
-                        <span class="preco-tag">Pague R$ ${p.v}</span>
+                        <div class="card-content">
+                            <span class="saldo-label">SALDO</span>
+                            <span class="saldo-valor">R$ ${p.s}</span>
+                            <span class="preco-tag">Pague R$ ${p.v}</span>
+                        </div>
                     </div>
                 `);
             });
@@ -183,10 +221,10 @@
         </button>
 
         <a href="https://wa.me/556183290023?text=Mande%20seu%20comprovante%20aq" class="btn-main btn-wpp">
-            <i class="fab fa-whatsapp"></i> MANDE SEU COMPROVANTE AQ
+            <i class="fab fa-whatsapp"></i> ENVIAR COMPROVANTE
         </a>
         
-        <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">
+        <p style="font-size: 0.65rem; color: #777; margin-top: 10px;">
             A chave é aleatória. Copie, pague no seu banco e envie o print.
         </p>
     </div>
