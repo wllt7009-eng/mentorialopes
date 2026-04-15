@@ -10,7 +10,9 @@
     <style>
         :root {
             --bg-bege: #f2e8d9;
-            --topo-marrom: #4a3a2e;
+            /* MUDANÇA 1: A cor do topo agora é um degradê escuro que combina com a foto */
+            --topo-gradiente-inicio: #1a1a1a; /* Escuro profundo */
+            --topo-gradiente-fim: #2a2a2a;    /* Ligeiramente mais claro */
             --laranja-botao: #f5a661;
             --texto-escuro: #1a1a1a;
         }
@@ -25,12 +27,33 @@
             min-height: 100vh;
         }
 
+        /* MUDANÇA 2: O cabeçalho agora usa a imagem e o gradiente para misturar */
         .header {
             width: 100%;
-            background-color: var(--topo-marrom);
+            /* 2a. Imagem de fundo e gradiente de mistura */
+            background-image: 
+                /* Este gradiente faz a parte de baixo da imagem suavizar para o bege do fundo */
+                linear-gradient(to bottom, rgba(26,26,26,0) 70%, var(--bg-bege) 100%),
+                /* Substitua 'capa-pagamento.jpg' pelo nome da sua foto de cartões dourados */
+                url('capa-pagamento.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
             display: flex;
             justify-content: center;
-            padding: 50px 0 30px 0;
+            /* Aumentei um pouco o padding para o topo escuro aparecer mais */
+            padding: 70px 0 50px 0; 
+            position: relative;
+        }
+
+        /* Opcional: Adiciona uma leve sobreposição escura para destacar a foto de perfil */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.3); /* Escurece a imagem de fundo levemente */
+            z-index: 1;
         }
 
         .profile-img {
@@ -38,9 +61,14 @@
             height: 180px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #f2e8d9;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            /* MUDANÇA 3: A borda agora é preta para combinar com a nova estética escura */
+            border: 4px solid #1a1a1a; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative; /* Para ficar acima da sobreposição escura */
+            z-index: 2;
         }
+
+        /* RESTO DO CÓDIGO PERMANECE IGUAL (como você pediu) */
 
         h1 {
             font-size: 2.2rem;
@@ -59,6 +87,8 @@
             border-radius: 35px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
+            position: relative;
+            z-index: 2; /* Garante que o card fique acima da mistura do gradiente */
         }
 
         .btn-link {
@@ -75,7 +105,6 @@
             box-shadow: 0 4px 15px rgba(245, 166, 97, 0.3);
         }
 
-        /* Efeito ao clicar no botão */
         .btn-link:active {
             transform: scale(0.95);
         }
@@ -110,40 +139,38 @@
 </head>
 <body>
     <div id="music-player" style="position: fixed; top: 15px; right: 15px; z-index: 9999;">
-    <button onclick="toggleMusic()" id="music-btn" style="background: rgba(0, 200, 83, 0.1); border: 1px solid #00c853; color: #00c853; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">
-        <i class="fas fa-music" id="music-icon"></i>
-    </button>
-    <audio id="bg-audio" loop>
-        <source src="musicado7 💸(MP3).mp3" type="audio/mpeg">
-    </audio>
-</div>
+        <button onclick="toggleMusic()" id="music-btn" style="background: rgba(0, 200, 83, 0.1); border: 1px solid #00c853; color: #00c853; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">
+            <i class="fas fa-music" id="music-icon"></i>
+        </button>
+        <audio id="bg-audio" loop>
+            <source src="musicado7 💸(MP3).mp3" type="audio/mpeg">
+        </audio>
+    </div>
 
-<script>
-    function toggleMusic() {
-        const audio = document.getElementById('bg-audio');
-        const icon = document.getElementById('music-icon');
-        const btn = document.getElementById('music-btn');
+    <script>
+        function toggleMusic() {
+            const audio = document.getElementById('bg-audio');
+            const icon = document.getElementById('music-icon');
+            const btn = document.getElementById('music-btn');
 
-        if (audio.paused) {
-            audio.play();
-            icon.classList.remove('fa-music');
-            icon.classList.add('fa-pause');
-            btn.style.background = '#00c853';
-            btn.style.color = '#fff';
-        } else {
-            audio.pause();
-            icon.classList.remove('fa-pause');
-            icon.classList.add('fa-music');
-            btn.style.background = 'rgba(0, 200, 83, 0.1)';
-            btn.style.color = '#00c853';
+            if (audio.paused) {
+                audio.play();
+                icon.classList.remove('fa-music');
+                icon.classList.add('fa-pause');
+                btn.style.background = '#00c853';
+                btn.style.color = '#fff';
+            } else {
+                audio.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-music');
+                btn.style.background = 'rgba(0, 200, 83, 0.1)';
+                btn.style.color = '#00c853';
+            }
         }
-    }
+        
+        document.getElementById('bg-audio').volume = 0.5;
+    </script>
     
-    // Define o volume inicial em 50% para não assustar o cliente
-    document.getElementById('bg-audio').volume = 0.5;
-</script>
-    
-
     <div class="header">
         <img src="perfil.jpg" alt="MentoriaLopes" class="profile-img">
     </div>
@@ -154,14 +181,12 @@
         <a href="https://wa.me/5538997404945?text=Vim%20pelo%20Insta" class="btn-link">
             🍊 laranjas aq
         </a>
-    <a href="referencias.html" class="btn-link" style="background-color: #4a3a2e; font-size: 1.2rem; margin-top: 15px;">
-    ⭐ CC; (Referencias de venda)
-    </a>
-        <a href="produtos.html" class="btn-link" style="background-color: #d4af37; color: #000; font-weight: bold;">
-    💰 Venda de contas recargapay com saldo 
+        <a href="referencias.html" class="btn-link" style="background-color: #4a3a2e; font-size: 1.2rem; margin-top: 15px;">
+            ⭐ CC; (Referencias de venda)
         </a>
-        
-        
+        <a href="produtos.html" class="btn-link" style="background-color: #d4af37; color: #000; font-weight: bold;">
+            💰 Venda de contas recargapay com saldo 
+        </a>
 
         <p class="description">
             (este link te leva pra meu wtsaap pessoal,<br>
