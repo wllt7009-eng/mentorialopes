@@ -8,12 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Cores extraídas da primeira página para manter o charme */
             --gold-vivid: #ffd700;
             --gold-glow: rgba(255, 215, 0, 0.4);
             --bg-deep-dark: #0a0a0a;
             --text-light: #eeeeee;
-            --card-glass: rgba(0, 0, 0, 0.75);
         }
 
         body {
@@ -34,7 +32,6 @@
             box-sizing: border-box;
         }
 
-        /* Cabeçalho Black & Gold */
         .header {
             text-align: center;
             padding: 20px 0;
@@ -61,10 +58,8 @@
             font-weight: 600;
             border: 1px solid var(--gold-vivid);
             box-shadow: 0 0 10px var(--gold-glow);
-            transition: 0.3s;
         }
 
-        /* Grade de Blocos com a imagem do dragão */
         .price-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -76,28 +71,25 @@
             position: relative;
             height: 110px;
             border-radius: 16px;
-            overflow: hidden; /* Corta a imagem nas bordas arredondadas */
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 1px solid rgba(255, 215, 0, 0.2);
-            transition: 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* Imagem de fundo do bloco (Dragão Dourado) */
         .price-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('1000804582.jpg'); /* Sua imagem de fundo */
+            background-image: url('1000804582.jpg');
             background-size: cover;
             background-position: center;
             z-index: 1;
         }
 
-        /* Camada de mistura para o texto aparecer (Overlay) */
         .price-card::after {
             content: '';
             position: absolute;
@@ -106,19 +98,16 @@
             z-index: 2;
         }
 
-        .price-card:active { transform: scale(0.95); border-color: var(--gold-vivid); }
-
         .card-content {
             position: relative;
-            z-index: 3; /* Fica acima da imagem e do fundo preto */
+            z-index: 3;
             text-align: center;
         }
 
-        .saldo-label { font-size: 0.65rem; color: #bbb; text-transform: uppercase; font-weight: 400; }
+        .saldo-label { font-size: 0.65rem; color: #bbb; text-transform: uppercase; }
         .saldo-valor { font-size: 1.2rem; font-weight: 800; color: #fff; margin: 2px 0; display: block; }
-        .preco-tag { color: var(--gold-vivid); font-weight: 700; font-size: 0.95rem; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+        .preco-tag { color: var(--gold-vivid); font-weight: 700; font-size: 0.95rem; }
 
-        /* Ações */
         .action-box {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 24px;
@@ -126,8 +115,6 @@
             border: 1px solid rgba(255, 215, 0, 0.1);
             text-align: center;
         }
-
-        .action-box h2 { font-size: 1.1rem; margin-bottom: 15px; color: var(--gold-vivid); }
 
         .btn-main {
             width: 100%;
@@ -142,7 +129,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: 0.3s;
         }
 
         .btn-pix { background: #fff; color: #000; }
@@ -159,11 +145,10 @@
             z-index: 10;
             bottom: 30px;
             font-weight: 700;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        #toast.show { visibility: visible; }
 
         .btn-voltar {
             display: block;
@@ -187,16 +172,14 @@
         </a>
     </div>
 
-    <p style="text-align:center; font-size: 0.8rem; color: #aaa; margin-bottom: 15px;">Escolha o valor desejado na tabela abaixo:</p>
-
     <div class="price-grid">
         <script>
+            // Lista atualizada apenas com os 10 primeiros itens
             const produtos = [
                 {s: "400", v: "60"}, {s: "610", v: "85"}, {s: "720", v: "95"}, 
                 {s: "800", v: "110"}, {s: "900", v: "120"}, {s: "1.050", v: "135"},
                 {s: "1.550", v: "150"}, {s: "2.120", v: "170"}, {s: "2.550", v: "280"},
-                {s: "3.500", v: "350"}, {s: "4.100", v: "400"}, {s: "5.100", v: "500"},
-                {s: "6.200", v: "600"}, {s: "7.400", v: "700"}, {s: "10.200", v: "1.000"}
+                {s: "3.500", v: "350"}
             ];
 
             produtos.forEach(p => {
@@ -214,19 +197,12 @@
     </div>
 
     <div class="action-box">
-        <h2>Finalize seu Pedido</h2>
-        
         <button class="btn-main btn-pix" onclick="copyPix()">
             <i class="fas fa-copy"></i> COPIAR CHAVE PIX
         </button>
-
         <a href="https://wa.me/556183290023?text=Mande%20seu%20comprovante%20aq" class="btn-main btn-wpp">
             <i class="fab fa-whatsapp"></i> ENVIAR COMPROVANTE
         </a>
-        
-        <p style="font-size: 0.65rem; color: #777; margin-top: 10px;">
-            A chave é aleatória. Copie, pague no seu banco e envie o print.
-        </p>
     </div>
 
     <a href="index.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar ao menu anterior</a>
@@ -238,7 +214,7 @@
         navigator.clipboard.writeText(chave).then(() => {
             const toast = document.getElementById("toast");
             toast.className = "show";
-            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+            setTimeout(() => { toast.className = ""; }, 3000);
         });
     }
 </script>
