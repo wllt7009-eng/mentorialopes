@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Seguro - MentoriaLopes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f1d592;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at top right, #1a1a1a, #0a0a0a);
+        }
+
+        .checkout-container {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 20px;
+        }
+
+        /* Cabeçalho Profissional */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Tabela de Produtos Estilo Listagem VIP */
+        .product-list {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-item:last-child { border-bottom: none; }
+
+        .info-main { display: flex; flex-direction: column; }
+        .label-saldo { font-weight: 600; font-size: 1rem; color: #fff; }
+        .label-sub { font-size: 0.75rem; color: #666; }
+
+        .price-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Seção de Pagamento PIX */
+        .payment-box {
+            text-align: center;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            color: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .payment-box h2 { font-size: 1.2rem; margin-bottom: 20px; font-weight: 700; }
+
+        .qr-placeholder {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 20px;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .qr-placeholder img { width: 100%; height: 100%; border-radius: 8px; }
+
+        .pix-instructions { font-size: 0.8rem; color: #555; line-height: 1.5; }
+        
+        .security-footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            opacity: 0.5;
+            font-size: 0.7rem;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <div class="header">
+            <p>Área de Pagamento</p>
+            <h1>MentoriaLopes<span>.</span></h1>
+        </div>
+
+        <div class="product-list">
+            <div class="product-item">
+                <div class="info-main">
+                    <span class="label-saldo">Conta R$ 400</span>
+                    <span class="label-sub">Liberação Imediata</span>
+                </div>
+                <div class="price-tag">R$ 60</div>
+            </div>
+
+            <div class="product-item">
+                <div class="info-main">
+                    <span class="label-saldo">Conta R$ 1.550</span>
+                    <span class="label-sub">Saldo Transferível</span>
+                </div>
+                <div class="price-tag">R$ 150</div>
+            </div>
+
+            <div class="product-item">
+                <div class="info-main">
+                    <span class="label-saldo">Conta R$ 5.100</span>
+                    <span class="label-sub">Premium Pack</span>
+                </div>
+                <div class="price-tag">R$ 500</div>
+            </div>
+
+            <div class="product-item" style="border:none;">
+                <div class="info-main">
+                    <span class="label-saldo">Conta R$ 10.200</span>
+                    <span class="label-sub">VIP Business</span>
+                </div>
+                <div class="price-tag">R$ 1.000</div>
+            </div>
+        </div>
+
+        <div class="payment-box">
+            <h2>Finalizar via PIX</h2>
+            <div class="qr-placeholder">
+                <img src="qrcode.jpg" alt="QR Code de Pagamento">
+            </div>
+            <p class="pix-instructions">
+                Aponte a câmera do seu celular para o QR Code.<br>
+                Após o pagamento, envie o comprovante no WhatsApp.
+            </p>
+        </div>
+
+        <div class="security-footer">
+            <span><i class="fas fa-lock"></i> Pagamento Criptografado</span>
+            <span><i class="fas fa-shield-alt"></i> Compra 100% Segura</span>
+        </div>
+
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-chevron-left"></i> Voltar para a Galeria
+        </a>
+    </div>
+
+</body>
+</html>
