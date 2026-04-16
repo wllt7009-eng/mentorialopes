@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mentoria | Ponto de Vista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --gold: #ffd700;
+            --gold-dim: rgba(255, 215, 0, 0.2);
+            --text: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Efeito de iluminação suave no topo */
+        body::after {
+            content: "";
+            position: fixed;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 50px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .btn-back:hover { opacity: 1; letter-spacing: 3px; }
+
+        .intro-card {
+            border-left: 2px solid var(--gold);
+            padding-left: 25px;
+            margin-bottom: 80px;
+        }
+
+        .intro-card p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            font-size: 1.15rem;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        /* Destaques em blocos maiores para frases de impacto */
+        .highlight-block {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1.3;
+            margin: 60px 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-align: left;
+        }
+
+        p { margin-bottom: 30px; }
+
+        .separator {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            margin: 40px 0;
+            opacity: 0.5;
+        }
+
+        strong { color: var(--gold); font-weight: 700; }
+
+        footer {
+            margin-top: 100px;
+            padding-bottom: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        /* Ajustes Mobile */
+        @media (max-width: 600px) {
+            .container { width: 90%; padding: 40px 0; }
+            .intro-card p { font-size: 1.1rem; }
+            .highlight-block { font-size: 1.4rem; }
+            .content-section { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retornar</a>
+
+        <div class="intro-card">
+            <p>
+                Prazer, me chamo Ivo — e essa mentoria existe com base no meu ponto de vista e opiniões em relação a algumas coisas. Espero que possa te fazer refletir sobre alguns temas interessantes. Boa leitura.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <p>
+                Ao longo do tempo, fica claro que <strong>desenvolvimento pessoal não é sobre frases bonitas ou motivação passageira.</strong> É sobre encarar a realidade de frente, mesmo quando ela não é confortável. Uma das primeiras coisas que se entende é que corpo e mente não são separados — são a mesma estrutura funcionando em níveis diferentes.
+            </p>
+
+            <p>
+                Quando o corpo é negligenciado, a mente paga o preço. A ansiedade aumenta, a insegurança cresce, a preguiça domina. Mas quando o movimento entra em cena, mesmo sem vontade, algo muda. Não é só físico. Surge mais presença, mais capacidade, mais vida. <strong>Treinar deixa de ser apenas estética e passa a ser construção interna.</strong> A cada repetição, existe uma prova silenciosa de que é possível ir além dos próprios limites.
+            </p>
+
+            <div class="highlight-block">
+                O mundo julga, sim. <br>A questão não é perfeição, e sim cuidado.
+            </div>
+
+            <p>
+                Com o tempo, também se abandona a ilusão sobre aparência. O mundo julga, sim. As pessoas formam opiniões rápidas, e isso influencia oportunidades, relações e até o respeito que se recebe. Não é confortável admitir isso, mas é real. Porém, a questão não é perfeição, e sim cuidado. Postura, higiene, forma de se apresentar — tudo isso comunica algo antes mesmo de qualquer palavra. É uma linguagem silenciosa que revela se existe ou não respeito próprio.
+            </p>
+
+            <p>
+                E isso leva a um ponto delicado: a autoimagem. Quando alguém não se sente bem com o próprio corpo, isso começa a afetar tudo. A pessoa se retrai, pensa duas vezes antes de agir, evita situações. A insegurança não surge do nada — ela é construída pela falta de ação e pelo acúmulo de pequenas frustrações. E autoestima não se resolve apenas com pensamento positivo. Ela nasce da evidência, da percepção de evolução, mesmo que lenta.
+            </p>
+
+            <div class="separator"></div>
+
+            <p>
+                A mudança real começa quando se troca a espera pela vontade pela decisão de agir apesar dela. Pequenas ações diárias começam a construir algo maior: <strong>respeito próprio.</strong> E isso altera completamente a forma como alguém se posiciona no mundo.
+            </p>
+
+            <p>
+                Em algum momento dessa jornada, ideias mais profundas reforçam esse caminho. O conceito de “ligar o foda-se” não é sobre indiferença total, mas sobre escolha. Não é possível controlar o que os outros pensam, nem o passado, nem tudo que acontece. Mas é possível controlar as próprias ações, decisões e reações. Essa compreensão traz um tipo de poder diferente — não sobre os outros, mas sobre si mesmo.
+            </p>
+
+            <p>
+                Ao mesmo tempo, existe uma realidade difícil: nem todo apoio vem de onde se espera. Muitas vezes, pessoas de fora acreditam mais do que quem está perto. Isso pode gerar dor, mas também traz aprendizado. Nem todos estão na mesma fase, nem todos enxergam o mesmo caminho. E, no fim, cada um precisa aprender a ser o próprio suporte.
+            </p>
+
+            <div class="highlight-block">
+                A vida adulta se aproxima... <br>e a pressão silenciosa aparece.
+            </div>
+
+            <p>
+                Quando a vida adulta se aproxima, surge uma pressão silenciosa. Existe a ideia de que o homem precisa ter algo, construir algo, ser alguém. E quando isso ainda não foi alcançado, aparece a sensação de atraso, de insuficiência. Muitos carregam isso em silêncio. A cobrança interna cresce, a comparação se intensifica, e isso pode se transformar em ansiedade e frustração.
+            </p>
+
+            <p>
+                Parte dessa dificuldade vem de uma base frágil. O sistema de ensino muitas vezes falha em preparar para a vida real. Ensina a decorar, mas não a pensar. Não ensina sobre dinheiro, comportamento ou direção. Por isso, quem deseja evoluir precisa assumir a responsabilidade pelo próprio aprendizado.
+            </p>
+
+            <p>
+                Nos relacionamentos, o impacto disso tudo se torna ainda mais evidente. Escolher com quem se envolver é uma das decisões mais importantes. Uma pessoa pode impulsionar ou desestabilizar completamente. Por isso, torna-se essencial valorizar mais a paz do que a intensidade momentânea. Se afastar de pessoas confusas, instáveis ou emocionalmente desorganizadas deixa de ser opção e passa a ser necessidade.
+            </p>
+
+            <p>
+                Ao mesmo tempo, é importante evitar visões simplistas. Pessoas são complexas. O que sustenta um relacionamento não é julgamento superficial, mas sim caráter, valores e maturidade. Atitudes consistentes passam a valer mais do que histórias ou aparências.
+            </p>
+
+            <div class="separator"></div>
+
+            <p>
+                Outro fator que pesa é a influência da internet. Existe uma distorção constante da realidade. Corpos perfeitos, vidas perfeitas, resultados rápidos. E a comparação com isso gera frustração. Porque, no fundo, não é real. E quanto mais alguém se compara, mais se afasta do próprio processo.
+            </p>
+
+            <p>
+                Após o fim da escola, outra mudança forte acontece. As conexões diminuem. As pessoas seguem caminhos diferentes. O contato diário desaparece. Surge um vazio. E é nesse momento que começa, de fato, a vida adulta. Mais silenciosa, mais solitária, mas também mais real.
+            </p>
+
+            <p>
+                Muitos jovens passam a sonhar com a ideia de sair do país, buscar oportunidades fora, construir uma vida melhor. Mas existe um ponto importante: mudar de lugar não resolve falta de direção interna. Sem clareza, disciplina e propósito, os mesmos problemas continuam existindo, apenas em outro cenário.
+            </p>
+
+            <div class="highlight-block">
+                Ser funcional, confiável e sólido. <br>Isso é evolução.
+            </div>
+
+            <p>
+                No meio de tudo isso, forma-se uma visão mais equilibrada sobre masculinidade. Não se trata de ser o mais dominante ou o mais agressivo, mas de ser funcional, confiável, alguém que resolve problemas e constrói algo sólido. Alguém que protege sem controlar, que cuida sem depender, que sustenta não apenas financeiramente, mas também emocionalmente.
+            </p>
+
+            <p>
+                No final, tudo converge para a mesma ideia: evolução. Não existe transformação imediata. Existe processo. Existe erro, tentativa, frustração e crescimento. E quando se abandona a necessidade de perfeição e se abraça a melhoria constante, tudo começa a fazer mais sentido.
+            </p>
+
+            <p style="font-size: 1.4rem; color: #fff; font-weight: 700; border-top: 1px solid var(--gold-dim); padding-top: 40px;">
+                Porque, no fundo, a mudança real acontece quando se para de esperar que o mundo mude… e se começa a mudar a si mesmo.
+            </p>
+        </div>
+
+        <footer>
+            MENTORIALOPES — FILOSOFIA & DESENVOLVIMENTO © 2026
+        </footer>
+    </div>
+
+</body>
+</html>
