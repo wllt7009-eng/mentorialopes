@@ -2,176 +2,263 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap Dev | MentoriaLopes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Terminal Dev | MentoriaLopes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0a;
+            --bg-deep: #050505;
             --gold: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.4);
+            --hacker-green: #00ff41;
             --orange: #ff8c00;
-            --card-bg: rgba(20, 20, 20, 0.8);
+        }
+
+        /* Efeito de scanline (hacker style) */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
         }
 
         body {
             margin: 0;
-            padding: 20px;
+            padding: 0;
             font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
-            color: #eee;
-            line-height: 1.6;
+            background-color: var(--bg-deep);
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .container { max-width: 600px; margin: 0 auto; }
+        .container {
+            width: 92%;
+            max-width: 700px;
+            padding: 40px 0;
+        }
 
-        .back-btn {
+        .back-link {
             text-decoration: none;
             color: var(--gold);
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 20px;
-        }
-
-        h1 { font-weight: 800; font-size: 2rem; border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 30px; }
-        h1 span { color: var(--gold); }
-
-        .module-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .module-tag {
+            font-family: 'Fira Code', monospace;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 5px;
             display: inline-block;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
+            transition: 0.3s;
         }
 
-        .tag-linux { background: #2ecc71; color: #000; }
-        .tag-git { background: #3498db; color: #fff; }
-        .tag-web { background: #f1c40f; color: #000; }
-        .tag-money { background: #e74c3c; color: #fff; }
+        h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
+        h1 span { color: var(--gold); text-shadow: 0 0 20px var(--gold-glow); }
 
-        h2 { font-size: 1.3rem; margin: 10px 0; color: #fff; }
-        
-        code {
-            background: #000;
-            color: var(--gold);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9rem;
+        .status-bar { font-family: 'Fira Code', monospace; color: var(--hacker-green); font-size: 0.8rem; margin-bottom: 40px; }
+
+        .terminal-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            overflow: hidden;
         }
 
-        .cmd-block {
+        .terminal-header {
+            background: #222;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+
+        .terminal-body { padding: 30px; line-height: 1.8; }
+
+        h2 { font-size: 1.6rem; color: #fff; margin-top: 0; }
+        h3 { color: var(--gold); font-size: 1.2rem; margin: 25px 0 10px 0; border-bottom: 1px solid rgba(255,215,0,0.1); display: inline-block; }
+
+        .code-block {
             background: #000;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
-            border-right: 3px solid var(--gold);
+            font-family: 'Fira Code', monospace;
+            color: var(--hacker-green);
             margin: 15px 0;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #adadad;
+            border-left: 4px solid var(--gold);
+            box-shadow: inset 0 0 10px rgba(0,255,65,0.1);
         }
-
-        .highlight { color: var(--orange); font-weight: 600; }
 
         .roadmap-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.85rem;
+            margin-top: 20px;
+            background: rgba(0,0,0,0.3);
         }
 
-        .roadmap-table th { text-align: left; color: var(--gold); padding: 10px; border-bottom: 1px solid #333; }
-        .roadmap-table td { padding: 10px; border-bottom: 1px solid #222; }
+        .roadmap-table th { color: var(--gold); text-align: left; padding: 15px; border-bottom: 2px solid #333; }
+        .roadmap-table td { padding: 15px; border-bottom: 1px solid #222; font-size: 0.9rem; }
 
-        .footer-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 40px;
-            padding-bottom: 20px;
-        }
+        .highlight-gold { color: var(--gold); font-weight: 800; }
+        .highlight-orange { color: var(--orange); font-weight: 800; }
+
+        .cursor { display: inline-block; width: 10px; height: 20px; background: var(--gold); animation: blink 1s infinite; vertical-align: middle; margin-left: 5px; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        footer { text-align: center; color: #444; font-family: 'Fira Code', monospace; margin-top: 60px; padding-bottom: 40px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar ao Início</a>
+    <div class="container">
+        <a href="index.html" class="back-link">> VOLTAR_ROOT</a>
 
-    <h1>Dev<span>Mobile</span> Roadmap</h1>
+        <h1>SISTEMA<span>.PROG</span></h1>
+        <div class="status-bar">ACESSO: LEVEL_18 // USUÁRIO: IVO_LOPES // STATUS: ONLINE</div>
 
-    <div class="module-card">
-        <span class="module-tag tag-linux">Módulo 1</span>
-        <h2><i class="fas fa-terminal"></i> O Terminal no Bolso (Termux)</h2>
-        <p>O Termux é um sistema Linux rodando dentro do seu Android. É aqui que a mágica acontece.</p>
-        <div class="cmd-block">
-            pkg update && pkg upgrade <br>
-            termux-setup-storage <br>
-            pkg install git nodejs python
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_01.sh</span>
+            </div>
+            <div class="terminal-body">
+                <h2>🟢 Módulo 1: O Terminal no Bolso (Termux)</h2>
+                <p>O Termux não é apenas um "app", ele é um sistema Linux rodando dentro do seu Android. É aqui que a mágica acontece.</p>
+                
+                <h3>1.1 Preparação do Terreno</h3>
+                <p>Primeiro, não baixe o Termux pela Play Store (ela está desatualizada). Use o <span class="highlight-gold">F-Droid</span>. Após instalar, abra o terminal e execute os comandos de sobrevivência:</p>
+                
+                <div class="code-block">
+                    pkg update && pkg upgrade
+                </div>
+                <p><b>pkg update && pkg upgrade:</b> Atualiza todos os pacotes.</p>
+
+                <div class="code-block">
+                    termux-setup-storage
+                </div>
+                <p><b>termux-setup-storage:</b> Dá ao Termux permissão para acessar suas pastas de fotos e documentos.</p>
+
+                <h3>1.2 Instalando as Ferramentas de Elite</h3>
+                <p>Para programar, você precisa de um motor (linguagem) e uma caixa de ferramentas (Git). Execute:</p>
+                <div class="code-block">
+                    pkg install git nodejs python
+                </div>
+            </div>
         </div>
-        <p><small>*Instale sempre via <b>F-Droid</b> para manter atualizado.</small></p>
-    </div>
 
-    <div class="module-card">
-        <span class="module-tag tag-git">Módulo 2</span>
-        <h2><i class="fab fa-github"></i> O Cofre (GitHub)</h2>
-        <p>Configure sua identidade para salvar seus projetos na nuvem:</p>
-        <div class="cmd-block">
-            git config --global user.name "Seu Nome"<br>
-            git config --global user.email "email@exemplo.com"
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_02.sh</span>
+            </div>
+            <div class="terminal-body">
+                <h2>🔵 Módulo 2: O Cofre e o Portfólio (GitHub)</h2>
+                <p>O GitHub é onde você guarda seu código e mostra para o mundo (e para clientes) que você sabe o que está fazendo.</p>
+                
+                <h3>2.1 Configurando sua Identidade</h3>
+                <p>No Termux, conecte sua conta:</p>
+                <div class="code-block">
+                    git config --global user.name "Seu Nome"<br>
+                    git config --global user.email "seuemail@exemplo.com"
+                </div>
+
+                <h3>2.2 O Ciclo de Trabalho</h3>
+                <div class="code-block">
+                    git init<br>
+                    git add .<br>
+                    git commit -m "Meu primeiro site"<br>
+                    git push
+                </div>
+                <p><b>git init:</b> Inicia um projeto na sua pasta. <br>
+                   <b>git add .:</b> Prepara os arquivos para o envio. <br>
+                   <b>git commit -m:</b> Carimba a versão atual. <br>
+                   <b>git push:</b> Envia para as nuvens (GitHub).</p>
+
+                <p class="highlight-orange">Dica de Ouro: Use o GitHub Pages. Com ele, você hospeda seu site de graça. Se o seu repositório se chamar usuario.github.io, o mundo inteiro poderá acessá-lo pelo navegador.</p>
+            </div>
         </div>
-        <p><span class="highlight">Dica de Ouro:</span> Use o <b>GitHub Pages</b> para hospedar seus sites de graça com o domínio <code>usuario.github.io</code>.</p>
-    </div>
 
-    <div class="module-card">
-        <span class="module-tag tag-web">Módulo 3</span>
-        <h2><i class="fas fa-code"></i> HTML / CSS / JS</h2>
-        <p>Mesmo no celular, foque no Front-end:</p>
-        <ul>
-            <li><span class="highlight">HTML5:</span> A estrutura (ossos).</li>
-            <li><span class="highlight">CSS3:</span> O estilo (pele/roupa).</li>
-            <li><span class="highlight">JavaScript:</span> A inteligência (músculos).</li>
-        </ul>
-        <p>Recomendo o app <b style="color:var(--gold)">Acode</b> para editar seu código com conforto no Android.</p>
-    </div>
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_03.sh</span>
+            </div>
+            <div class="terminal-body">
+                <h2>🟡 Módulo 3: Construindo Sites pelo Celular (HTML/CSS/JS)</h2>
+                <p>Mesmo no celular, o foco deve ser o Front-end inicial:</p>
+                <ul>
+                    <li><span class="highlight-gold">HTML5:</span> A estrutura (os ossos).</li>
+                    <li><span class="highlight-gold">CSS3:</span> O estilo (a pele e a roupa). Use Flexbox para garantir que o site fique bonito tanto no PC quanto no celular.</li>
+                    <li><span class="highlight-gold">JavaScript:</span> A inteligência (os músculos).</li>
+                </ul>
 
-    <div class="module-card" style="border-color: var(--orange);">
-        <span class="module-tag tag-money">Módulo 4</span>
-        <h2><i class="fas fa-dollar-sign"></i> Plano de Faturamento</h2>
-        <p>Como transformar código em dinheiro:</p>
-        <p><b>1. Landing Pages:</b> Venda para negócios locais (R$ 200 a R$ 500).</p>
-        <p><b>2. Freelancer:</b> Micro-tarefas em sites como Workana e Fiverr.</p>
-        <p><b>3. Automação:</b> Crie bots em Python para otimizar processos.</p>
-    </div>
+                <h3>Onde digitar o código?</h3>
+                <p>Embora o Termux tenha editores como nano ou vim, eu recomendo o app <span class="highlight-gold">Acode</span>. Ele é um editor de código gratuito para Android que se integra ao Termux e tem realce de cores, facilitando muito a sua vida.</p>
+            </div>
+        </div>
 
-    <div class="module-card">
-        <h2><i class="fas fa-map-signs"></i> Roadmap Cirúrgico</h2>
-        <table class="roadmap-table">
-            <tr><th>Fase</th><th>Estudo</th></tr>
-            <tr><td>Semana 1</td><td>Comandos Linux / Termux</td></tr>
-            <tr><td>Semana 2</td><td>HTML5 e CSS3 Básico</td></tr>
-            <tr><td>Semana 3</td><td>Git e GitHub</td></tr>
-            <tr><td>Semana 4</td><td>Lógica em JS</td></tr>
-        </table>
-    </div>
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_04.sh</span>
+            </div>
+            <div class="terminal-body">
+                <h2>🔴 Módulo 4: O Plano de Faturamento (Como ganhar dinheiro)</h2>
+                <p>Aqui é onde a teoria vira dinheiro no bolso. Como iniciante com um celular, você tem três caminhos claros:</p>
+                
+                <h3>1. Criação de Landing Pages para Negócios Locais</h3>
+                <p>Muitas barbearias, lanchonetes e profissionais liberais não têm um site.</p>
+                <p><b>A estratégia:</b> Crie um modelo (template) bonitão de uma página (Landing Page).<br>
+                <b>A venda:</b> Ofereça por um valor acessível (ex: R$ 200 a R$ 500). Como você faz pelo celular e hospeda de graça no GitHub Pages ou Vercel, seu custo é zero.</p>
 
-    <div class="footer-note">
-        <p>Teclado OTG + Networking + Portfólio = Sucesso.</p>
-        <p>MentoriaLopes © 2026</p>
+                <h3>2. Freelancer em Micro-Tarefas</h3>
+                <p>Sites como Workana, 99Freelas e Fiverr têm demandas de "ajustes em HTML" ou "correção de bugs em CSS". São tarefas que você resolve em 30 minutos no terminal.</p>
+
+                <h3>3. Venda de Scripts e Automação</h3>
+                <p>Se você aprender um pouco de Python no Termux, pode criar bots de automação para empresas (ex: organizador de planilhas, bots de WhatsApp simples) e vender o serviço de manutenção.</p>
+            </div>
+        </div>
+
+        <div class="terminal-card">
+            <div class="terminal-body">
+                <h2>📚 Roadmap de Estudo "Cirúrgico"</h2>
+                <p>Para não se perder, siga esta ordem exata:</p>
+                <table class="roadmap-table">
+                    <tr><th>Fase</th><th>O que estudar</th><th>Onde buscar</th></tr>
+                    <tr><td>Semana 1</td><td>Comandos Linux/Termux</td><td>Curso em Vídeo</td></tr>
+                    <tr><td>Semana 2</td><td>HTML5 e CSS3 Básico</td><td>CFB Cursos</td></tr>
+                    <tr><td>Semana 3</td><td>Git e GitHub</td><td>Filipe Deschamps</td></tr>
+                    <tr><td>Semana 4</td><td>Lógica de Prog (JS)</td><td>Curso em Vídeo</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="terminal-body" style="background: rgba(255, 215, 0, 0.05); border-radius: 12px; border: 1px dashed var(--gold);">
+            <h2 style="color: var(--gold);">Dicas Finais para o Sucesso:</h2>
+            <p><b>Teclado:</b> Se puder, compre um adaptador OTG e conecte um teclado USB no seu celular. Isso vai triplicar sua velocidade.</p>
+            <p><b>Networking:</b> Entre em grupos de Discord de programação. O erro que você terá no Termux, alguém já resolveu lá.</p>
+            <p><b>Portfólio:</b> Cada linha de código que você fizer, suba para o GitHub. Seu perfil no GitHub é o seu novo currículo.</p>
+            
+            <p style="font-size: 1.1rem; color: #fff; margin-top: 30px;">
+                Você tem 18 anos e já domina ferramentas complexas como Redstone e Linux no mobile. A lógica de programação é apenas uma extensão do que você já faz. <span class="highlight-gold">Comece hoje, suba seu primeiro index.html e não pare até o primeiro cliente aparecer.</span><span class="cursor"></span>
+            </p>
+        </div>
+
+        <footer>
+            -- MENTORIA_LOPES EXECUTION_COMPLETE v2.0 --
+        </footer>
     </div>
-</div>
 
 </body>
 </html>
