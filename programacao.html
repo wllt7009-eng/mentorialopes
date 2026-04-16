@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Dev | MentoriaLopes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --gold: #ffd700;
+            --orange: #ff8c00;
+            --card-bg: rgba(20, 20, 20, 0.8);
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+            color: #eee;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 600px; margin: 0 auto; }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-weight: 800; font-size: 2rem; border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 30px; }
+        h1 span { color: var(--gold); }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .module-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .tag-linux { background: #2ecc71; color: #000; }
+        .tag-git { background: #3498db; color: #fff; }
+        .tag-web { background: #f1c40f; color: #000; }
+        .tag-money { background: #e74c3c; color: #fff; }
+
+        h2 { font-size: 1.3rem; margin: 10px 0; color: #fff; }
+        
+        code {
+            background: #000;
+            color: var(--gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .cmd-block {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 3px solid var(--gold);
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #adadad;
+        }
+
+        .highlight { color: var(--orange); font-weight: 600; }
+
+        .roadmap-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .roadmap-table th { text-align: left; color: var(--gold); padding: 10px; border-bottom: 1px solid #333; }
+        .roadmap-table td { padding: 10px; border-bottom: 1px solid #222; }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar ao Início</a>
+
+    <h1>Dev<span>Mobile</span> Roadmap</h1>
+
+    <div class="module-card">
+        <span class="module-tag tag-linux">Módulo 1</span>
+        <h2><i class="fas fa-terminal"></i> O Terminal no Bolso (Termux)</h2>
+        <p>O Termux é um sistema Linux rodando dentro do seu Android. É aqui que a mágica acontece.</p>
+        <div class="cmd-block">
+            pkg update && pkg upgrade <br>
+            termux-setup-storage <br>
+            pkg install git nodejs python
+        </div>
+        <p><small>*Instale sempre via <b>F-Droid</b> para manter atualizado.</small></p>
+    </div>
+
+    <div class="module-card">
+        <span class="module-tag tag-git">Módulo 2</span>
+        <h2><i class="fab fa-github"></i> O Cofre (GitHub)</h2>
+        <p>Configure sua identidade para salvar seus projetos na nuvem:</p>
+        <div class="cmd-block">
+            git config --global user.name "Seu Nome"<br>
+            git config --global user.email "email@exemplo.com"
+        </div>
+        <p><span class="highlight">Dica de Ouro:</span> Use o <b>GitHub Pages</b> para hospedar seus sites de graça com o domínio <code>usuario.github.io</code>.</p>
+    </div>
+
+    <div class="module-card">
+        <span class="module-tag tag-web">Módulo 3</span>
+        <h2><i class="fas fa-code"></i> HTML / CSS / JS</h2>
+        <p>Mesmo no celular, foque no Front-end:</p>
+        <ul>
+            <li><span class="highlight">HTML5:</span> A estrutura (ossos).</li>
+            <li><span class="highlight">CSS3:</span> O estilo (pele/roupa).</li>
+            <li><span class="highlight">JavaScript:</span> A inteligência (músculos).</li>
+        </ul>
+        <p>Recomendo o app <b style="color:var(--gold)">Acode</b> para editar seu código com conforto no Android.</p>
+    </div>
+
+    <div class="module-card" style="border-color: var(--orange);">
+        <span class="module-tag tag-money">Módulo 4</span>
+        <h2><i class="fas fa-dollar-sign"></i> Plano de Faturamento</h2>
+        <p>Como transformar código em dinheiro:</p>
+        <p><b>1. Landing Pages:</b> Venda para negócios locais (R$ 200 a R$ 500).</p>
+        <p><b>2. Freelancer:</b> Micro-tarefas em sites como Workana e Fiverr.</p>
+        <p><b>3. Automação:</b> Crie bots em Python para otimizar processos.</p>
+    </div>
+
+    <div class="module-card">
+        <h2><i class="fas fa-map-signs"></i> Roadmap Cirúrgico</h2>
+        <table class="roadmap-table">
+            <tr><th>Fase</th><th>Estudo</th></tr>
+            <tr><td>Semana 1</td><td>Comandos Linux / Termux</td></tr>
+            <tr><td>Semana 2</td><td>HTML5 e CSS3 Básico</td></tr>
+            <tr><td>Semana 3</td><td>Git e GitHub</td></tr>
+            <tr><td>Semana 4</td><td>Lógica em JS</td></tr>
+        </table>
+    </div>
+
+    <div class="footer-note">
+        <p>Teclado OTG + Networking + Portfólio = Sucesso.</p>
+        <p>MentoriaLopes © 2026</p>
+    </div>
+</div>
+
+</body>
+</html>
