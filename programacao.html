@@ -15,7 +15,6 @@
             --orange: #ff8c00;
         }
 
-        /* Efeito de scanline (hacker style) */
         body::before {
             content: " ";
             display: block;
@@ -39,11 +38,7 @@
             align-items: center;
         }
 
-        .container {
-            width: 92%;
-            max-width: 700px;
-            padding: 40px 0;
-        }
+        .container { width: 92%; max-width: 700px; padding: 40px 0; }
 
         .back-link {
             text-decoration: none;
@@ -54,7 +49,6 @@
             border-radius: 5px;
             display: inline-block;
             margin-bottom: 30px;
-            transition: 0.3s;
         }
 
         h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
@@ -97,23 +91,39 @@
             color: var(--hacker-green);
             margin: 15px 0;
             border-left: 4px solid var(--gold);
-            box-shadow: inset 0 0 10px rgba(0,255,65,0.1);
         }
 
-        .roadmap-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: rgba(0,0,0,0.3);
-        }
-
+        .roadmap-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0,0,0,0.3); }
         .roadmap-table th { color: var(--gold); text-align: left; padding: 15px; border-bottom: 2px solid #333; }
         .roadmap-table td { padding: 15px; border-bottom: 1px solid #222; font-size: 0.9rem; }
 
         .highlight-gold { color: var(--gold); font-weight: 800; }
         .highlight-orange { color: var(--orange); font-weight: 800; }
 
-        .cursor { display: inline-block; width: 10px; height: 20px; background: var(--gold); animation: blink 1s infinite; vertical-align: middle; margin-left: 5px; }
+        /* NOVA SEÇÃO: DOMINANDO O MERCADO MOBILE */
+        .expert-section {
+            background: linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,1));
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 35px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .expert-section::before {
+            content: "TOP_SECRET";
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--gold);
+            color: #000;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            font-weight: 900;
+        }
+
+        .cursor { display: inline-block; width: 10px; height: 20px; background: var(--gold); animation: blink 1s infinite; vertical-align: middle; }
         @keyframes blink { 50% { opacity: 0; } }
 
         footer { text-align: center; color: #444; font-family: 'Fira Code', monospace; margin-top: 60px; padding-bottom: 40px; }
@@ -130,133 +140,115 @@
         <div class="terminal-card">
             <div class="terminal-header">
                 <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_01.sh</span>
+                <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: #666;">module_01.sh</span>
             </div>
             <div class="terminal-body">
                 <h2>🟢 Módulo 1: O Terminal no Bolso (Termux)</h2>
                 <p>O Termux não é apenas um "app", ele é um sistema Linux rodando dentro do seu Android. É aqui que a mágica acontece.</p>
-                
                 <h3>1.1 Preparação do Terreno</h3>
                 <p>Primeiro, não baixe o Termux pela Play Store (ela está desatualizada). Use o <span class="highlight-gold">F-Droid</span>. Após instalar, abra o terminal e execute os comandos de sobrevivência:</p>
-                
-                <div class="code-block">
-                    pkg update && pkg upgrade
-                </div>
+                <div class="code-block">pkg update && pkg upgrade</div>
                 <p><b>pkg update && pkg upgrade:</b> Atualiza todos os pacotes.</p>
-
-                <div class="code-block">
-                    termux-setup-storage
-                </div>
+                <div class="code-block">termux-setup-storage</div>
                 <p><b>termux-setup-storage:</b> Dá ao Termux permissão para acessar suas pastas de fotos e documentos.</p>
-
                 <h3>1.2 Instalando as Ferramentas de Elite</h3>
                 <p>Para programar, você precisa de um motor (linguagem) e uma caixa de ferramentas (Git). Execute:</p>
-                <div class="code-block">
-                    pkg install git nodejs python
-                </div>
+                <div class="code-block">pkg install git nodejs python</div>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-header">
                 <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_02.sh</span>
+                <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: #666;">module_02.sh</span>
             </div>
             <div class="terminal-body">
                 <h2>🔵 Módulo 2: O Cofre e o Portfólio (GitHub)</h2>
                 <p>O GitHub é onde você guarda seu código e mostra para o mundo (e para clientes) que você sabe o que está fazendo.</p>
-                
                 <h3>2.1 Configurando sua Identidade</h3>
-                <p>No Termux, conecte sua conta:</p>
-                <div class="code-block">
-                    git config --global user.name "Seu Nome"<br>
-                    git config --global user.email "seuemail@exemplo.com"
-                </div>
-
+                <div class="code-block">git config --global user.name "Seu Nome"<br>git config --global user.email "seuemail@exemplo.com"</div>
                 <h3>2.2 O Ciclo de Trabalho</h3>
-                <div class="code-block">
-                    git init<br>
-                    git add .<br>
-                    git commit -m "Meu primeiro site"<br>
-                    git push
-                </div>
-                <p><b>git init:</b> Inicia um projeto na sua pasta. <br>
-                   <b>git add .:</b> Prepara os arquivos para o envio. <br>
-                   <b>git commit -m:</b> Carimba a versão atual. <br>
-                   <b>git push:</b> Envia para as nuvens (GitHub).</p>
-
-                <p class="highlight-orange">Dica de Ouro: Use o GitHub Pages. Com ele, você hospeda seu site de graça. Se o seu repositório se chamar usuario.github.io, o mundo inteiro poderá acessá-lo pelo navegador.</p>
+                <div class="code-block">git init<br>git add .<br>git commit -m "Meu primeiro site"<br>git push</div>
+                <p><span class="highlight-orange">Dica de Ouro:</span> Use o GitHub Pages. Com ele, você hospeda seu site de graça.</p>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-header">
                 <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_03.sh</span>
+                <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: #666;">module_03.sh</span>
             </div>
             <div class="terminal-body">
                 <h2>🟡 Módulo 3: Construindo Sites pelo Celular (HTML/CSS/JS)</h2>
-                <p>Mesmo no celular, o foco deve ser o Front-end inicial:</p>
-                <ul>
-                    <li><span class="highlight-gold">HTML5:</span> A estrutura (os ossos).</li>
-                    <li><span class="highlight-gold">CSS3:</span> O estilo (a pele e a roupa). Use Flexbox para garantir que o site fique bonito tanto no PC quanto no celular.</li>
-                    <li><span class="highlight-gold">JavaScript:</span> A inteligência (os músculos).</li>
-                </ul>
-
-                <h3>Onde digitar o código?</h3>
-                <p>Embora o Termux tenha editores como nano ou vim, eu recomendo o app <span class="highlight-gold">Acode</span>. Ele é um editor de código gratuito para Android que se integra ao Termux e tem realce de cores, facilitando muito a sua vida.</p>
+                <p>Mesmo no celular, o foco deve ser o Front-end inicial: <b>HTML5, CSS3 e JavaScript.</b></p>
+                <p>Recomendo o app <span class="highlight-gold">Acode</span> para editar seu código. Ele se integra ao Termux e facilita sua vida.</p>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-header">
                 <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-                <span style="font-family: 'Fira Code', font-size: 0.7rem; color: #666;">module_04.sh</span>
+                <span style="font-family: 'Fira Code'; font-size: 0.7rem; color: #666;">module_04.sh</span>
             </div>
             <div class="terminal-body">
                 <h2>🔴 Módulo 4: O Plano de Faturamento (Como ganhar dinheiro)</h2>
-                <p>Aqui é onde a teoria vira dinheiro no bolso. Como iniciante com um celular, você tem três caminhos claros:</p>
-                
-                <h3>1. Criação de Landing Pages para Negócios Locais</h3>
-                <p>Muitas barbearias, lanchonetes e profissionais liberais não têm um site.</p>
-                <p><b>A estratégia:</b> Crie um modelo (template) bonitão de uma página (Landing Page).<br>
-                <b>A venda:</b> Ofereça por um valor acessível (ex: R$ 200 a R$ 500). Como você faz pelo celular e hospeda de graça no GitHub Pages ou Vercel, seu custo é zero.</p>
-
-                <h3>2. Freelancer em Micro-Tarefas</h3>
-                <p>Sites como Workana, 99Freelas e Fiverr têm demandas de "ajustes em HTML" ou "correção de bugs em CSS". São tarefas que você resolve em 30 minutos no terminal.</p>
-
-                <h3>3. Venda de Scripts e Automação</h3>
-                <p>Se você aprender um pouco de Python no Termux, pode criar bots de automação para empresas (ex: organizador de planilhas, bots de WhatsApp simples) e vender o serviço de manutenção.</p>
+                <p>1. <b>Landing Pages para Negócios Locais:</b> Venda por R$ 200 a R$ 500.<br>
+                2. <b>Freelancer em Micro-Tarefas:</b> Workana, 99Freelas e Fiverr.<br>
+                3. <b>Venda de Scripts e Automação:</b> Use Python no Termux.</p>
             </div>
         </div>
 
         <div class="terminal-card">
             <div class="terminal-body">
                 <h2>📚 Roadmap de Estudo "Cirúrgico"</h2>
-                <p>Para não se perder, siga esta ordem exata:</p>
                 <table class="roadmap-table">
-                    <tr><th>Fase</th><th>O que estudar</th><th>Onde buscar</th></tr>
-                    <tr><td>Semana 1</td><td>Comandos Linux/Termux</td><td>Curso em Vídeo</td></tr>
-                    <tr><td>Semana 2</td><td>HTML5 e CSS3 Básico</td><td>CFB Cursos</td></tr>
-                    <tr><td>Semana 3</td><td>Git e GitHub</td><td>Filipe Deschamps</td></tr>
-                    <tr><td>Semana 4</td><td>Lógica de Prog (JS)</td><td>Curso em Vídeo</td></tr>
+                    <tr><th>Fase</th><th>Estudo</th><th>Fonte</th></tr>
+                    <tr><td>Semana 1</td><td>Linux/Termux</td><td>Curso em Vídeo</td></tr>
+                    <tr><td>Semana 2</td><td>HTML/CSS</td><td>CFB Cursos</td></tr>
+                    <tr><td>Semana 3</td><td>Git/GitHub</td><td>Filipe Deschamps</td></tr>
+                    <tr><td>Semana 4</td><td>Lógica (JS)</td><td>Curso em Vídeo</td></tr>
                 </table>
             </div>
         </div>
 
         <div class="terminal-body" style="background: rgba(255, 215, 0, 0.05); border-radius: 12px; border: 1px dashed var(--gold);">
             <h2 style="color: var(--gold);">Dicas Finais para o Sucesso:</h2>
-            <p><b>Teclado:</b> Se puder, compre um adaptador OTG e conecte um teclado USB no seu celular. Isso vai triplicar sua velocidade.</p>
-            <p><b>Networking:</b> Entre em grupos de Discord de programação. O erro que você terá no Termux, alguém já resolveu lá.</p>
-            <p><b>Portfólio:</b> Cada linha de código que você fizer, suba para o GitHub. Seu perfil no GitHub é o seu novo currículo.</p>
-            
+            <p><b>Teclado:</b> Compre um adaptador OTG. Isso vai triplicar sua velocidade.<br>
+            <b>Networking:</b> Entre em grupos de Discord de programação.<br>
+            <b>Portfólio:</b> Cada linha de código que você fizer, suba para o GitHub.</p>
             <p style="font-size: 1.1rem; color: #fff; margin-top: 30px;">
-                Você tem 18 anos e já domina ferramentas complexas como Redstone e Linux no mobile. A lógica de programação é apenas uma extensão do que você já faz. <span class="highlight-gold">Comece hoje, suba seu primeiro index.html e não pare até o primeiro cliente aparecer.</span><span class="cursor"></span>
+                Você tem 18 anos e já domina ferramentas complexas como Redstone e Linux no mobile. A lógica de programação é apenas uma extensão do que você já faz. <span class="highlight-gold">Comece hoje, suba seu primeiro index.html e não pare até o primeiro cliente aparecer.</span>
+            </p>
+        </div>
+
+        <div class="expert-section">
+            <h2 style="color: var(--gold); text-transform: uppercase;">🚀 Domine o Mercado direto do seu Bolso</h2>
+            <p>
+                Se você acha que precisa de um computador de R$ 5.000 para ser um desenvolvedor profissional, você está enganado. <span class="highlight-gold">Este site que você está navegando agora foi construído, codificado e hospedado inteiramente através de um celular.</span> Isso prova que o poder não está na máquina, mas na sua capacidade de dominar as ferramentas certas.
+            </p>
+            
+            <h3 style="border:none;">Como o ciclo de venda funciona no Mobile:</h3>
+            <p>
+                O segredo para vender sites pelo celular é a <b>agilidade</b>. Enquanto outros desenvolvedores levam dias para abrir um notebook, você resolve bugs e faz alterações no código dentro do ônibus, na fila do banco ou em qualquer lugar usando o <b>Termux</b> e o <b>Acode</b>.
+            </p>
+            
+            <p>
+                <b>A Estratégia de Venda Direta:</b><br>
+                Abra o Google Maps no seu celular, procure por comércios locais (Barbearias, Pizzarias, Studios de Tattoo) que não possuem site ou que têm sites antigos que não funcionam no mobile. <br><br>
+                Use o seu próprio site (feito pelo celular) como <b>seu cartão de visitas</b>. Chegue no dono do estabelecimento e mostre: <i>"Eu construí isso aqui usando apenas o meu smartphone, imagine o que posso fazer pelo seu negócio."</i> Essa abordagem gera autoridade imediata porque você prova que domina a tecnologia de forma extrema.
+            </p>
+            
+            <p style="background: rgba(0,255,65,0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--hacker-green);">
+                <i class="fas fa-exclamation-triangle"></i> <b>Lembre-se:</b> O cliente não quer saber se você usou um PC de última geração ou um Android. Ele quer um site que carregue rápido, que venda o produto dele e que seja bonito. Com o <b>HTML/CSS</b> bem aplicado e o <b>GitHub Pages</b>, você entrega uma solução profissional com custo de produção ZERO. Toda a grana do projeto vai direto para o seu bolso.
+            </p>
+            
+            <p style="font-weight: 700; color: var(--gold); margin-top: 20px;">
+                O celular deixou de ser um brinquedo para ser sua maior ferramenta de guerra. Digite o futuro.<span class="cursor"></span>
             </p>
         </div>
 
         <footer>
-            -- MENTORIA_LOPES EXECUTION_COMPLETE v2.0 --
+            -- MENTORIA_LOPES // MOBILE_DEV_REVOLUTION v2.0 --
         </footer>
     </div>
 
